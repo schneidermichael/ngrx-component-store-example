@@ -1,0 +1,4 @@
+<ul>
+    <li *ngFor="let movie of (movies$ | async)">{{ movie.name }}</li>
+</ul>
+<app-movies-button></app-movies-button>
