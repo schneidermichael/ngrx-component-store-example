@@ -5,13 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MoviesButtonComponent } from './movies-button/movies-button.component';
 
 @Component({
-  selector: 'app-movies-pages',
-  templateUrl: './movies-pages.component.html',
-  styleUrl: './movies-pages.component.scss',
-  standalone: true,
-  providers: [MoviesStore],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MatButtonModule, MoviesButtonComponent],
+    selector: 'app-movies-pages',
+    templateUrl: './movies-pages.component.html',
+    styleUrl: './movies-pages.component.scss',
+    providers: [MoviesStore],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, MatButtonModule, MoviesButtonComponent]
 })
 export class MoviesPagesComponent {
   movies$ = this.moviesStore.movies$;

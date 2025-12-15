@@ -3,12 +3,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MoviesStore } from '../../stores';
 
 @Component({
-  selector: 'app-movies-button',
-  standalone: true,
-  imports: [MatButtonModule],
-  templateUrl: './movies-button.component.html',
-  styleUrl: './movies-button.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-movies-button',
+    imports: [MatButtonModule],
+    templateUrl: './movies-button.component.html',
+    styleUrl: './movies-button.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesButtonComponent {
   constructor(private readonly moviesStore: MoviesStore) {}
