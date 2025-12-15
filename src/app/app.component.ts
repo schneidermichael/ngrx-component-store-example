@@ -7,8 +7,8 @@ import { MoviesButtonComponent } from './movies-pages/movies-button/movies-butto
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, MoviesPagesComponent, MoviesButtonComponent]
+    imports: [RouterOutlet, MoviesPagesComponent]
 })
 export class AppComponent {
-  title = 'ngrx-component-store-example';
+  title = 'ngrx-signal-store-example';
 }

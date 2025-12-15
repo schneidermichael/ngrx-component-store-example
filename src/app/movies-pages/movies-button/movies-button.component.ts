@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MoviesStore } from '../../stores';
+import { Movie } from '../../models';
 
 @Component({
     selector: 'app-movies-button',
@@ -10,16 +11,15 @@ import { MoviesStore } from '../../stores';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesButtonComponent {
-  constructor(private readonly moviesStore: MoviesStore) {}
+  readonly moviesStore = inject(MoviesStore)
 
   public add() {
-    this.moviesStore.addMovie({
-      name: 'sdfsdf',
-      id: 2,
-    });
+
+    let newMovie : Movie = {name:"Harry Potter", id:Math.random()}
+    this.moviesStore.updateMovie(newMovie);
   }
 
   public consoleLog() {
-    this.moviesStore.fetchMoviesData$.subscribe((m) => console.log(m));
+    console.log(this.moviesStore.movies());
   }
 }

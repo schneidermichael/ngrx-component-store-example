@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MoviesStore } from '../stores';
 import { MatButtonModule } from '@angular/material/button';
 import { MoviesButtonComponent } from './movies-button/movies-button.component';
@@ -13,7 +13,5 @@ import { MoviesButtonComponent } from './movies-button/movies-button.component';
     imports: [CommonModule, MatButtonModule, MoviesButtonComponent]
 })
 export class MoviesPagesComponent {
-  movies$ = this.moviesStore.movies$;
-
-  constructor(private readonly moviesStore: MoviesStore) {}
+  movies = inject(MoviesStore)
 }

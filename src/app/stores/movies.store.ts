@@ -1,25 +1,16 @@
-import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
 import { MoviesState } from '../interfaces';
-import { Movie } from '../models/movie.model';
-import { Observable } from 'rxjs';
+import { patchState, signalStore,  withMethods, withState } from '@ngrx/signals';
+import { Movie } from '../models';
 
-@Injectable()
-export class MoviesStore extends ComponentStore<MoviesState> {
-  constructor() {
-    super({ movies: [] });
-  }
+const initialState: MoviesState = {
+  movies: []
+};
 
-  readonly movies$: Observable<Movie[]> = this.select((state) => state.movies);
-
-  readonly addMovie = this.updater((state, movie: Movie) => ({
-    movies: [...state.movies, movie],
-  }));
-
-  readonly fetchMoviesData$ = this.select(
-    {
-      currentMovies: this.movies$,
+export const MoviesStore = signalStore(
+  withState(initialState),
+  withMethods((store) => ({
+    updateMovie(movie: Movie): void {
+      patchState(store,  ({ movies: store.movies().concat(movie)} ))
     },
-    { debounce: true } // 👈 setting this selector to debounce
-  );
-}
+     }))
+);
